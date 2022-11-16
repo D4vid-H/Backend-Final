@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/css/home.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1 class="title">Config Server</h1>
+
+    <div id="config">
+      <div class="container">
+        
+          <h3><%= config.production.title %></h3>
+          <ul>
+            <li><%= config.production.server %></li>
+            <li><%= config.production.port %></li>
+            <li><%= config.production.email %></li>
+          </ul>
+          <h3><%= config.developer.title %></h3>
+
+          <ul>
+            <li><%= config.developer.server %></li>
+            <li><%= config.developer.port %></li>
+            <li><%= config.developer.email %></li>
+          </ul>
+        
+      </div>
+      <button class="btn btn-success my-3" onclick="goHome()">go Home</button>
+    </div>
+
+    <div id="app"></div>
+    <script>
+      function redireccionar(pagina) {
+        location.href = pagina;
+      }
+
+      function goHome() {
+        redireccionar("/home");
+      }
+    </script>
+  </body>
+</html>

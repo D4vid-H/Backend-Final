@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add Products</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/css/addProduct.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body class="crear-editar listar">
+    <main class="crear">
+      <ul class="ul">
+        <li class="crumb li"><a href="/">Home</a></li>
+        <li class="divider li">></li>
+        <li class="crumb-active li" aria-current="page">
+          <a href="/product/list">Listar Productos</a>
+        </li>
+      </ul>
+      <h1>Crear producto</h1>
+      <div class="divForm">
+        <form action="/addProduct" method="post" enctype="multipart/form-data">
+          <section>
+            <div class="form-floating">
+              <label for="nombre">Nombre del producto</label>
+              <input
+                type="text"
+                class="form-control"
+                name="nombre"
+                id="nombre"
+                value="<%= locals.old && old.nombre ? old.nombre : null%>"
+                placeholder="Nombre del producto"
+              />
+              <p class="span text-danger">
+                <%= locals.errors && errors.nombre ? errors.nombre.msg : null %>
+              </p>
+            </div>
+            <div class="form-floating">
+              <label for="categoria">Categoría</label>
+              <select
+                class="form-select"
+                name="categoria"
+                id="categoria"
+                aria-label="Floating label select example"
+              >
+                <option selected hidden>Selecciona una opcion</option>
+                <option value="Esmaltado">Esmaltado</option>
+                <option value="Esmaltado Semipermanente">
+                  Esmaltado Semipermanente
+                </option>
+                <option value="Construcción de uñas">
+                  Construcción de uñas
+                </option>
+                <option value="Decoración">Decoración</option>
+                <option value="Esmaltes">Esmaltes</option>
+                <option value="Herramientas">Herramientas</option>
+                <option value="Accesorios">Accesorios</option>
+
+                <option value="Maquillaje">Maquillaje</option>
+              </select>
+              <p class="form-floating">
+                <%= locals.errors && errors.categoria ? errors.categoria.msg :
+                null %>
+              </p>
+            </div>
+            <div class="form-floating">
+              <label for="precio">Precio</label>
+              <input
+                type="number"
+                class="form-control"
+                name="precio"
+                id="precio"
+                min="1"
+                value="<%= locals.old && old.precio ? old.precio : null%>"
+                placeholder="Precio"
+              />
+              <p class="form-floating">
+                <%= locals.errors && errors.precio ? errors.precio.msg : null %>
+              </p>
+            </div>
+            <div class="form-floating">
+              <label for="descripcion">Descripción</label>
+              <textarea
+                name="descripcion"
+                id="description"
+                cols="30"
+                rows="10"
+                class="form-control"
+                placeholder="Descripcion del producto"
+                style="resize: none"
+              >
+<%= locals.old && old.descripcion ? old.descripcion : null%></textarea
+              >
+              <p class="span text-danger">
+                <%= locals.errors && errors.descripcion ? errors.descripcion.msg
+                : null %>
+              </p>
+            </div>
+            <div class="mb-3">
+              <label for="imagen" class="form-label"
+                >Imágenes del producto</label
+              >
+              <!-- <input class="form-control" type="file" name="imagen" id="imagen" multiple> -->
+              <label class="custom-file-upload">
+                <input type="file" name="imagen" id="imagen" multiple />
+                Subir imágenes
+              </label>
+              <p class="span text-danger">
+                <%= locals.errors && errors.imagen ? errors.imagen.msg : null %>
+              </p>
+            </div>
+
+            <div class="box-buttons">
+              <div class="button borrar">
+                <button type="reset">Borrar</button>
+              </div>
+              <div class="button crear">
+                <button class="btn btn-outline-success" type="submit">
+                  Crear
+                </button>
+              </div>
+            </div>
+          </section>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

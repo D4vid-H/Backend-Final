@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/css/home.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1 class="title">Home</h1>
+    <h3><%= user?.name %></h3>
+
+    <div id="home">
+      <img class="img_avatar" src="" alt="" />
+      <div class="cart_container">
+        <ul>
+          <h3>Carrito de compras</h3>
+          <table>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+            </tr>
+            <% cart.forEach(prod => { %>
+            <tr>
+              <td><%- prod.name %></td>
+              <td><%- prod.price %></td>
+              <td><%- prod.cant %></td>
+              <td><%- prod.cant * prod.price %></td>
+              <td>
+                <form action="/cart/product?_method=DELETE" method="post">
+                  <label for="productId">
+                    <input
+                      type="hidden"
+                      value="<%= prod.id %>"
+                      name="productId"
+                    />
+                  </label>
+                  <button type="submit">Eliminar</button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>TOTAL</td>
+              <td><%= totalPrice %></td>
+            </tr>
+          </table>
+        </ul>
+      </div>
+      <button class="btn btn-success my-3" onclick="goLogout()">Logout</button>
+      <button class="btn btn-success my-3" onclick="goChat()">Chat</button>
+    </div>
+
+    <div id="app"></div>
+    <script>
+      function redireccionar(pagina) {
+        location.href = pagina;
+      }
+
+      function goLogout() {
+        redireccionar("/logout");
+      }
+      function goChat() {
+        redireccionar("/chat");
+      }
+    </script>
+  </body>
+</html>
